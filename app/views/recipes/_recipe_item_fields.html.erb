@@ -1,0 +1,9 @@
+<div class="nested-fields form-inline">
+  <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+
+  <div class="form-group">
+    <%= f.label :amount %>
+    <%= f.number_field :amount, step: '0.1', min: '0.0', required: true, :class => 'form-control' %>
+  </div>
+  <%= link_to_remove_association "remove ingredient", f %>
+</div>

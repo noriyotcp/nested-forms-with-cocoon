@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2>Title:</h2>
+  <%= @recipe.title %>
+</p>
+
+<p>
+  <h2>Instructions:</h2>
+  <%= @recipe.instructions %>
+</p>
+
+<h2>Ingredients:</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe.ingredients.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td><%= RecipeItem.search_by_recipe(@recipe).search_by_ingredient(i).first.amount %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
